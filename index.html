@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bimasha - Photo & PDF Editor</title>
+
+  <!-- Google Fonts for modern style -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- Link to External CSS for style -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Bimasha - Photo & PDF Editor</h1>
+      <p>Upload, Edit, and Convert Your Photos to PDF</p>
+    </header>
+
+    <!-- Section Tabs -->
+    <div class="tabs">
+      <button class="tab-btn" onclick="showSection('photoEdit')">Photo Edit</button>
+      <button class="tab-btn" onclick="showSection('fileConvert')">Photo to PDF</button>
+    </div>
+
+    <!-- Photo Editing Section -->
+    <div class="content-section" id="photoEdit">
+      <input type="file" id="photoUpload" class="upload-btn" accept="image/*" onchange="handlePhotoUpload(event)">
+      <div class="photo-editing" id="photoEditing">
+        <img id="imagePreview" src="" alt="Your Image Here">
+        
+        <!-- Color Adjustments Section -->
+        <div class="adjustments">
+          <label for="brightness">Brightness</label>
+          <input type="range" id="brightness" min="0" max="200" value="100" onchange="adjustImage()">
+
+          <label for="contrast">Contrast</label>
+          <input type="range" id="contrast" min="0" max="200" value="100" onchange="adjustImage()">
+
+          <label for="saturation">Saturation</label>
+          <input type="range" id="saturation" min="0" max="200" value="100" onchange="adjustImage()">
+        </div>
+
+        <!-- Filters Section -->
+        <div class="controls">
+          <button onclick="applyFilter('grayscale')">Grayscale</button>
+          <button onclick="applyFilter('sepia')">Sepia</button>
+          <button onclick="applyFilter('invert')">Invert</button>
+          <button onclick="applyFilter('blur')">Blur</button>
+        </div>
+
+        <!-- Image Editing Controls -->
+        <div class="controls">
+          <button onclick="rotateImage()">Rotate</button>
+          <button onclick="resetImage()">Reset</button>
+          <button onclick="saveImage()">Save Image</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo to PDF Section -->
+    <div class="content-section" id="fileConvert">
+      <input type="file" id="photoUploadForPdf" class="upload-btn" accept="image/*" onchange="handlePhotoToPdfUpload(event)">
+      <div class="controls">
+        <button class="upload-btn" onclick="convertImageToPdf()">Convert Photo to PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Developed with ❤️ by <a href="https://github.com/bimasha" target="_blank">Bimasha and Team</a></p>
+  </footer>
+
+  <!-- Link to External JavaScript for functionality -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
